@@ -3,6 +3,7 @@
 package davidoliva_melvinrivas_lab8p2;
 
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -152,10 +153,10 @@ public class Frame extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
-        jList1.setSelectionMode(new DefaultListModel);
+        jList1.setModel(new DefaultListModel());
         jScrollPane1.setViewportView(jList1);
 
-        jList2.setSelectionMode(new DefaultListModel);
+        jList2.setModel(new DefaultListModel ());
         jScrollPane2.setViewportView(jList2);
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -277,6 +278,11 @@ public class Frame extends javax.swing.JFrame {
         });
 
         jButton2.setText("Iniciar Seccion");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen lab 8/unitec color (1).png"))); // NOI18N
 
@@ -424,10 +430,10 @@ public class Frame extends javax.swing.JFrame {
             User.add(new Participante(jTextField3.getText(), jTextField4.getText()));
             JOptionPane.showMessageDialog(this, "Se agrego correctamenta");
         } else if (administrador.isSelected()) {
-            User.add(new Admin(jTextField3.getText(), jTextField4.getText()));
+            Admin m=new Admin(jTextField3.getText(), jTextField4.getText());
+            User.add(m);
             JOptionPane.showMessageDialog(this, "Se agrego correctamenta");
         }
-
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -437,6 +443,21 @@ public class Frame extends javax.swing.JFrame {
         Crear_Torneo.setLocationRelativeTo(this);
         Crear_Torneo.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        for (User user : User) {
+            if (User.get(User.indexOf(user)).getNombreUsuario().equals(jTextField1.getText()) && User.get(User.indexOf(user)).getPassword().equals(jTextField2.getText())) {
+                if (User.get(User.indexOf(user)) instanceof Participante) {
+                    
+                }else if (User.get(User.indexOf(user)) instanceof Admin) {
+                     AbrirAdmin();
+                }
+            }else{
+               JOptionPane.showMessageDialog(this, "User o Password incorrectos");
+            }
+
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
 
 
     /**
@@ -472,6 +493,12 @@ public class Frame extends javax.swing.JFrame {
                 new Frame().setVisible(true);
             }
         });
+    }
+    public void AbrirAdmin() {
+        Admin.pack();
+        Admin.setModal(rootPaneCheckingEnabled);
+        Admin.setLocationRelativeTo(this);
+        Admin.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

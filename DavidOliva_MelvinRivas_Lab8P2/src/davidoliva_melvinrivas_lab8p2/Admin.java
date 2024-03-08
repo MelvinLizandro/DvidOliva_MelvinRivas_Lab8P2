@@ -17,9 +17,29 @@ public class Admin extends User {
         super(NombreUsuario, Password);
     }
 
+    public Admin(int NumeroTorneos) {
+        this.NumeroTorneos = NumeroTorneos;
+    }
+
     public Admin(int NumeroTorneos, String NombreUsuario, String Password) {
         super(NombreUsuario, Password);
         this.NumeroTorneos = NumeroTorneos;
     }
+    
+
+    public int getNumeroTorneos() {
+        return NumeroTorneos;
+    }
+
+    public void setNumeroTorneos(int NumeroTorneos) {
+        this.NumeroTorneos = NumeroTorneos;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" + "NumeroTorneos=" + NumeroTorneos + '}';
+    }
+
+
 
 }
