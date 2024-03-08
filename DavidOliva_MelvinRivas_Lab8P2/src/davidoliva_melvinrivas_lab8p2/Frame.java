@@ -288,7 +288,7 @@ public class Frame extends javax.swing.JFrame {
             administrador.setSelected(true);
             participante.setSelected(false);
         }
-        
+        //a 
     }//GEN-LAST:event_administradorActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
